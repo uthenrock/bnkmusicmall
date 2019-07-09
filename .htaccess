@@ -1,0 +1,12 @@
+RewriteEngine On
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^([a-zA-Z0-9-/+]+)/([a-zA-Z0-9-/+]+)/([a-zA-Z0-9-/+]+)$ index.php?p=$1&params1=$2&params2=$3 [L]
+RewriteRule ^([a-zA-Z0-9-/+]+)/([a-zA-Z0-9-/+]+)$ index.php?p=$1&params1=$2 [L]
+RewriteRule ^([a-zA-Z0-9-/+]+)$ index.php?p=$1 [L]
